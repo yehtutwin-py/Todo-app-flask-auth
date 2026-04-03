@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do App</title>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="bg-light">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="ms-2">Welcome, {{ current_user.username }}</h5>
+      <a href="/logout" class="btn btn-outline-danger btn-sm m-2">Logout</a>
+    </div>
+    <div class="container mt-5">
+      <h1 class="text-center mb-4">My To-Do Tasks</h1>
+      <!-- Form to add new tasks -->
+      <form action="/" method="POST" class="card p-4 shadow-sm mb-4">
+        <input
+          type="text"
+          name="task"
+          placeholder="Enter task"
+          class="form-control mb-2"
+        />
+        <input
+          type="text"
+          name="description"
+          placeholder="Enter description"
+          class="form-control mb-2"
+        />
+        <!-- Submit Button  -->
+        <div class="text-center mb-5">
+          <input type="submit" value="Add Task" class="btn btn-primary" />
+        </div>
+      </form>
+      <!-- Lists of Tasks -->
+      <ol class="list-group list-group-numbered">
+        <!-- Task Information -->
+        {% for task in tasks %}
+        <li class="list-group-item d-flex justify-content-between m-2 ps-4">
+          <div class="flex-grow-1 ms-2">
+            <h5 class="mb-1 text-start">{{ task.title }}</h5>
+            <small class="text-muted text-start">{{ task.description }}</small>
+          </div>
+          <!-- Action Buttons -->
+          <div class="d-flex align-items-center ms-3">
+            <button
+              onclick="location.href='/update/{{ task.id }}'"
+              class="btn btn-sm btn-outline-primary m-1"
+            >
+              Update
+            </button>
+            <button
+              onclick="location.href='/delete/{{ task.id }}'"
+              class="btn btn-sm btn-outline-danger"
+            >
+              Delete
+            </button>
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-light d-flex justify-content-center align-items-center"
+    style="height: 100vh"
+  >
+    <div class="card shadow p-4" style="width: 350px">
+      <h3 class="text-center mb-4">Login</h3>
+      <form method="POST">
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          class="form-control mb-3"
+          required
+        />
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          class="form-control mb-3"
+          required
+        />
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+      </form>
+      <p class="text-center mt-3">
+        Don't have an account? <a href="/register">Register</a>
+      </p>
+    </div>
+  </body>
+</html>
