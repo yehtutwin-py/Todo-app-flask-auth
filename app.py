@@ -8,8 +8,8 @@ from models import db, User, ToDo
 app = Flask(__name__)
 
 # Config
-app.config['SECRET_KEY'] = os.urandom(24)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
+app.config['SECRET_KEY'] = 'supersecretkey'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL') or 'sqlite:///todo.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize DB
@@ -138,7 +138,6 @@ def delete(id):
 # Run app
 if __name__ == '__main__':
     with app.app_context():
-        db.drop_all()
         db.create_all()
 
     app.run(debug=True)
